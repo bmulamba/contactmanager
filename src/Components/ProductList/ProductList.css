@@ -1,0 +1,12 @@
+
+.list-product {
+    width: 90%;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.link-color, .link-color:hover  {
+    color: black;
+    text-decoration: none;
+}
