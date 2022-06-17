@@ -10,9 +10,10 @@ export default class ProductList extends Component {
         {this.props.products.map((item) => {
           return (
             <div key={item.id}>
-              <Link to={`/product/${item.id}`} className="link-color">
-                <ProductCard
+              <Link to={`/product/${item.id}`} onClick={() => this.props.handleProductDetail(item.id)} className="link-color">
+                <ProductCard 
                   productCount={this.props.productCount}
+                  addToCard={this.props.addToCard}
                   item={item}
                   incrementProduct={this.props.incrementProduct}
                   decrementProduct={this.props.decrementProduct}

@@ -4,14 +4,15 @@
     height: 400px;
     padding: 10px;
     margin: 1rem;
+    top: 0%;
     background-color: white;
-    transition: all 500ms ease-in-out;
     box-shadow: 4px rgb(33, 184, 33);
 }
 
 .ccard img {
     width: 100%;
     max-height: 255px;
+    padding: 20px;
 }
 
 .btn {
@@ -25,7 +26,6 @@
     border-radius: 0;
     width: 100%;
     outline: none;
-    display: none;
 }
 
 .btn:hover {
@@ -34,12 +34,9 @@
     box-shadow: none;
 }
 
-
-
 .ccard:hover .btn {
     display: block;
     color: white;
-    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .badge-online {
@@ -50,5 +47,3 @@
     position: absolute;
     background-color: rgb(223, 237, 172);
 }
-
-

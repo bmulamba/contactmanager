@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Card from "./Components/Card/Card";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
-import ProductList from "./Components/ProductList/ProductList";
-import ProductDetail from "./Components/ProductDetails/ProductDetail";
+import Spinner from "./Components/Spinner/Spinner";
+
+const ProductList = lazy(() => import("./Components/ProductList/ProductList"));
+const ProductDetail = lazy(() =>
+  import("./Components/ProductDetails/ProductDetail")
+);
 
 export default class App extends Component {
   constructor(props) {
@@ -13,6 +17,7 @@ export default class App extends Component {
     this.state = {
       products: [],
       cart: [],
+      product: [],
       productCount: 1,
     };
   }
@@ -25,6 +30,12 @@ export default class App extends Component {
     this.setState(({ productCount }) => ({ productCount: productCount - 1 }));
   };
 
+  addToCard = (product) => {
+    this.setState((state) => ({
+      cart: [...state.cart, product],
+    }));
+  };
+
   componentDidMount() {
     fetch("https://apifakeapi.herokuapp.com/data")
       .then((res) => res.json())
@@ -33,27 +44,40 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Navbar cart={this.state.cart} total={this.state.total} />
         <Routes>
           <Route
             path="/"
             element={
-              <ProductList
-                products={this.state.products}
-                incrementProduct={this.incrementProduct}
-                productCount={this.state.productCount}
-                decrementProduct={this.decrementProduct}
-              />
+              <Suspense fallback={<Spinner />}>
+                <ProductList
+                  products={this.state.products}
+                  addToCard={this.addToCard}
+                  handleProductDetail={this.handleProductDetail}
+                  incrementProduct={this.incrementProduct}
+                  productCount={this.state.productCount}
+                  decrementProduct={this.decrementProduct}
+                />
+              </Suspense>
             }
           />
           <Route
             path="/product/:id"
-            element={<ProductDetail products={this.state.products} />}
+            element={
+              <Suspense fallback={<Spinner />}>
+                <ProductDetail
+                  incrementProduct={this.incrementProduct}
+                  addToCard={this.addToCard}
+                  productCount={this.state.productCount}
+                  decrementProduct={this.decrementProduct}
+                />{" "}
+              </Suspense>
+            }
           />
           <Route path="/cart" element={<Card />} />
         </Routes>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -1,27 +1,37 @@
 
 .card-flip {
     position: absolute;
-    background-color: rgb(235, 235, 240);
-    height: 285px;
+    background-color: rgb(171, 184, 199);
+    height: 307px;
     width: 100.5%;
     left: -1px;
-    bottom: -3px;
+    bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: 96%;
     flex-direction: column;
+    z-index: 1;
+    transition: all 1s ease-in-out;
 }
 
 .card-card-flip {
     text-align: center;
+    margin-top: 4rem;
 }
 
 .head-flip-card {
     display: flex;
+    margin: 1rem 0;
 }
 
 .head-flip-card .head-flip-delivery {
     margin: 0 1rem;
+    padding: .5rem 1.5rem;
+    border: 1px solid grey;
+}
+
+.head-flip-card .head-flip-delivery span {
+    margin: 0 .4rem;
 }
 
 .btn-incredec {
@@ -29,8 +39,9 @@
     align-items: center;
     max-height: 2.1rem;
     display: flex;
-    font-size: 30px;
-    background-color: rgb(172, 212, 196);
+    font-size: 33px;
+    background-color: rgb(135, 158, 149);
+    color: white;
     margin: 0 2rem;
 }
 
@@ -46,21 +57,24 @@
     justify-content: center;
     height: 300px;
     width: 100%;
-    top: 26vh;
+    top: 30vh;
     text-align: center;
     margin: 0 auto;
-    z-index: 999;
+    z-index: 9;
 }
 
 .add-to-card-btn {
-    width: 100%;
     position: relative;
-    top: 5.3rem;
-    border: transparent;
+    top: 9.75rem;
+    width: 100%;
+    /* height: 50px; */
+    left: 0;
     color: white;
     font-weight: bolder;
-    background-color: green;
-    /* bottom: 0;
-    left: 0; */
-    height: 50px;
+    background-color: rgb(13, 150, 13);
+}
+
+.from-bottom {
+    left: 0;
+    top: 23%;
 }

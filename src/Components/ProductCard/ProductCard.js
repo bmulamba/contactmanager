@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { FlipCard } from "../FlipCard/FlipCard";
+import FlipCard from "../FlipCard/FlipCard";
 
 import "./ProductCard.css";
 
@@ -46,9 +46,10 @@ export default class ProductCard extends Component {
             <FlipCard
               price={this.props.item.price}
               productCount={this.props.productCount}
+              addToCard={this.props.addToCard}
               incrementProduct={this.props.incrementProduct}
               decrementProduct={this.props.decrementProduct}
-              flipcard={this.flipcard}
+              // flipcard={this.flipcard}
             />
           }
     
