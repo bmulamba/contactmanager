@@ -8,7 +8,8 @@ export default class FlipCard extends Component {
 
     this.state = {
       addtoCard: true,
-    };
+      addtoCard: true,
+      addtoCard: true,  };
   }
 
   handleTextAddtoCart = () => {
