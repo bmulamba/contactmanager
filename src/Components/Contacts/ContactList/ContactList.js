@@ -68,10 +68,8 @@ export default function ContactList() {
               <div className='card'>
                 <div className='card-body'>
                   <div className='row align-items-center d-flex justify-content-around' >
-                  <div className='col-md-4'>
-                    <img src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-512.png' alt='img' className='contact-img' />
-                  </div>
-                  <div className='col-md-7'>
+                  
+                  <div className='col-md-10'>
                     <ul className='list-group'>
                       <li className='list-group-item list-group-item-action'>
                         Name : <span className='fw-bolt'>{user.name}</span>
@@ -100,6 +98,8 @@ export default function ContactList() {
               </div>
             </div>
           </div>
+))}
+</div>
         </div>
       </section>
     </React.Fragment>
