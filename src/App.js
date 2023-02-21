@@ -13,7 +13,7 @@ function App() {
     <React.Fragment>
       <Navbar/>
       <Routes>
-        <Route path={'/'} element={<Navigate to={'./contacts/list'}/>} />
+        <Route path={'/'} element={<Navigate to={'/contacts/list'}/>} />
         <Route path={'/contacts/list'} element={<ContactList />} />
         <Route path={'/contacts/add'} element={ <Addcontact />} />
         <Route path={'/contacts/view/:contactId'} element={ <ViewContact />} />

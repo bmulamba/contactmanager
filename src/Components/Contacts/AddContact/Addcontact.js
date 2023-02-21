@@ -10,7 +10,7 @@ export default function Addcontact() {
             <div className='col'>
               <p className='h4 text-success fw-bold'> Create Contact</p>
               <p className='fst-italic'>
-              Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown
+                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown
               </p>
             </div>
           </div>
