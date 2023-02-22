@@ -1,26 +1,15 @@
-import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import './App.css'
-import Addcontact from './Components/Contacts/AddContact/Addcontact'
-import ContactList from './Components/Contacts/ContactList/ContactList'
-import EdithContact from './Components/Contacts/EdithContact/EdithContact'
-import ViewContact from './Components/Contacts/ViewContact/ViewContact'
-import Navbar from './Components/Navbar/Navbar'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import AddUser from "./Components/AddUser/AddUser";
+import User from "./Components/Users/User";
 
-
-function App() {
+export default function App() {
   return (
-    <React.Fragment>
-      <Navbar/>
+    <div>
       <Routes>
-        <Route path={'/'} element={<Navigate to={'/contacts/list'}/>} />
-        <Route path={'/contacts/list'} element={<ContactList />} />
-        <Route path={'/contacts/add'} element={ <Addcontact />} />
-        <Route path={'/contacts/view/:contactId'} element={ <ViewContact />} />
-        <Route path={'/contacts/edit/:contactId'} element={ <EdithContact />} />
+        <Route path="/" element={<User />} />
+        <Route path="/add" element={<AddUser />} />
       </Routes>
-    </React.Fragment>
-  )
-}
-
-export default App
+    </div>
+  );
+  }
