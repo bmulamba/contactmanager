@@ -1,5 +1,14 @@
 .App {
+  font-family: sans-serif;
   text-align: center;
+  margin: 0 auto;
+}
+
+.user {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  margin: 5px;
 }
 
 .App-logo {

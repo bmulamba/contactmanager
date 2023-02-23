@@ -1,81 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./User.css";
+import React, { useState } from "react";
 
-export default function User() {
-  const [users, setUsers] = useState([]);
+export const User = ({ name, email, id, onEdit, onDelete }) => {
+  const [isEdit, setIsEdit] = useState(false);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    await fetch("https://jsonplaceholder.typicode.com/users/")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
   };
 
-  const handleDelete = async (id) => {
-    console.log(id);
-    await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          return;
-        } else {
-          setUsers(
-            users.filter((user) => {
-              return user.id !== id;
-            })
-          );
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleDelete = () => {
+    onDelete(id);
   };
 
-    // const handleDelete = () => {
-    //   onDelete(id);
-    // };
+  const handleOnEditSubmit = (evt) => {
+    evt.preventDefault();
+    onEdit(id, evt.target.name.value, evt.target.email.value);
+    setIsEdit(!isEdit);
+  };
 
   return (
-    <div className="container" >
-        <div>
-            <Link to='/add' className="btn btn-primary my-2">
-                ADD NEW +
-            </Link>
+    <div>
+      {isEdit ? (
+        <form onSubmit={handleOnEditSubmit}>
+          <input placeholder="Name" name="name" defaultValue={name} />
+          <input placeholder="Email" name="email" defaultValue={email} />
+          <button onSubmit={handleOnEditSubmit}>Save</button>
+        </form>
+      ) : (
+        <div className="user">
+          <span className="user-name">{name}</span>
+          <span className="user-email">{email}</span>
+          <div>
+            <button className="btn btn-warning" onClick={handleEdit}>Edit</button>
+            <button className="btn btn-danger mx-2" onClick={handleDelete}>Delete</button>
+          </div>
         </div>
-      
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Username</th>
-              <th scope="col">Email</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td className="d-flex">
-                    <span className="btn btn-warning mx-2">Edith</span>
-                    <span className="btn btn-danger" onClick={handleDelete}  >Delete</span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-    </div>   
+      )}
+    </div>
   );
-}
+};
